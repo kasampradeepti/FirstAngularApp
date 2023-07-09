@@ -1,1 +1,21 @@
-<app-employee-list> </app-employee-list>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+       <li class="nav-item">
+      <a routerLink="home" routerLinkActive="active" class="nav-link" selected > Home </a>
+       </li>
+        <li class="nav-item" >
+        <a routerLink="employeeList" routerLinkActive="active" class="nav-link">List Employees </a>   
+    </li>
+    <li>
+        <a routerLink="createEmployee" routerLinkActive="active" class="nav-link">Add Employee </a>
+    </li>   
+</ul>
+</nav>
+
+<router-outlet></router-outlet>
+<footer class="footer">
+  <div class="container">
+        <span> All Rights reserved by @Employee corporation </span>
+    </div>
+    
+</footer>
