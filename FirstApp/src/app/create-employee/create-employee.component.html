@@ -1,23 +1,40 @@
 <h2 style="text-align: center;"> Add New Employee </h2>
 <br>
 <div class="col-md-5 offset-md-4">
-    <form (ngSubmit) = "onSubmit()">
+    <form #registerForm="ngForm" (ngSubmit) = "registerForm.form.valid && onSubmit()">
         <div class="form-group" >
             <input type="text" id="firstName"  name="firstName" 
             class="form-control" placeholder="Enter First Name" 
-            [(ngModel)]="employee.firstName">
+            [(ngModel)]="employee.firstName" #fname="ngModel" minlength="2"  required>
+            <span class="text-danger" 
+            *ngIf="(fname.touched || registerForm.submitted) && fname.errors?.['required']">
+                 First Name is required
+        </span>
+        <span class="text-danger"
+        *ngIf="(fname.touched) || registerForm.submitted && fname.errors?.['minlength']">
+             Name should be minimum 2 characters length
+        </span>
         </div>
         <br>
         <div class="form-group">
             <input type="text" id="lastName" name="lastName" 
             class="form-control" placeholder="Enter Last Name" 
-            [(ngModel)]="employee.lastName">
+            [(ngModel)]="employee.lastName" #lname="ngModel" required>
+
+            <span class="text-danger"
+            *ngIf="(lname.touched || registerForm.submitted )&& lname.errors?.['required']">
+              Last Name required
+            </span>
         </div>
         <br>
         <div class="form-group">
             <input type="text" id="emailId" name="emailId" 
             class="form-control" placeholder="Enter email ID" 
-            [(ngModel)]="employee.emailId">
+            [(ngModel)]="employee.emailId" #email="ngModel" required>
+            <span class="text-danger"
+            *ngIf="(email.touched || registerForm.submitted) && email.errors?.['required']">
+                Email ID required
+        </span>
         </div>
     <br>
        
